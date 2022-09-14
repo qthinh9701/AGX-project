@@ -1,0 +1,185 @@
+.aside {
+    &-filter {
+        padding:  1.6rem 3.2rem;
+        border-radius: 8px;
+        background-color: #526B3E;
+        display: block;
+        color: white;
+        margin-bottom: 4rem;
+        width: fit-content;
+    }
+    .category-checkbox {
+        margin-bottom: 3rem;
+        max-height: 40vh;
+        overflow-y: auto;
+        &-item {
+            display: flex;
+            margin-bottom: 1.8rem;
+            align-items: center;
+            cursor: pointer;
+        }
+        &-sqr {
+            margin-right: 1.6rem;
+            width: 2.4rem;
+            height: 2.4rem;
+            border: 1px solid #526B3E;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: 0.4s;
+            &::after {
+                content: url("../img/checkicon.png");
+                position: absolute;
+                opacity: 0;
+                transition: 0.4s;
+            }
+        }
+        .recheck-input:checked ~ .category-checkbox-sqr {
+            background-color: #526B3E;
+            &::after {
+                opacity: 1;
+            }
+        }
+        input[type=checkbox] {
+            display: none;
+        }
+    }
+}
+.recruit {
+    &-wrap {
+
+    }
+    &-item  {
+        border-bottom: 1px solid #444444;
+        padding-bottom: 3.2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        .btn-main-green {
+            width: calc(2/8*100%);
+            color: #444444;
+            @include lg {
+                width: fit-content;
+                margin-left: auto;
+            }
+            
+        }
+        &-info {
+            width: calc(6/8*100%);
+            @include lg {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+            .title {
+                font-size: 24px;
+                font-weight: 700;
+            }
+            .desc {
+                margin-bottom: 1rem;
+            }
+            .calendar {
+                display: flex;
+                .locate {
+                    margin-right: 1.6rem;
+                    display: flex;
+                    align-items: center;
+                    img {
+                        margin-right: 1rem;
+                        flex-shrink: 0;
+                    }
+                }
+                .date {
+                    display: flex;
+                    align-items: center;
+                    img {
+                        margin-right: 1rem;
+                        flex-shrink: 0;
+                    }
+                }
+            }
+            .tag {
+                margin-top: 1.7rem;
+                max-width: 100%;
+                overflow-x: auto;
+                display: flex;
+                padding-bottom: 1rem;
+                &::-webkit-scrollbar {
+                    height: 1px;
+                }
+                &-item {
+                    padding: 0.4rem 1.6rem;
+                    background-color: rgba(82, 107, 62, 0.3);
+                    border-radius: 100px;
+                    margin-right: 2.4rem;
+                    img {
+                        flex-shrink: 0;
+                        margin-right: 1rem;
+                    }
+                    display: flex;
+                    align-items: center;
+                    &-txt {
+                        color: #818181;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+    &-title {
+        display: flex;
+        margin-bottom: 3rem;
+        flex-wrap: wrap-reverse;
+        &-txt {
+            font-size: 36px;
+            font-weight: 700;
+            color: #526B3E;
+            @include lg {
+                width: 100%;
+                font-size: 20px;
+                margin-top: 2rem;
+            }
+        }
+        .btn-main-green {
+            width: fit-content;
+            margin-left: auto;
+        }
+    }
+    .mona-content {
+        .title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        ul li {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 3rem;
+            &::after {
+                content: url("../img/tick.png");
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+}
+.goback {
+    padding-top: 5rem;
+    color: #526B3E;
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+    transition: 0.3s;
+    &:hover {
+        padding-left: 2.5rem;
+    }
+    &::after {
+        content: url("../img/arrowleft.png");
+        position: absolute;
+        left: 0;
+
+    }
+}

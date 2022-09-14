@@ -8,6 +8,7 @@ import SwiperModule from "../js/modules/SwiperModule.js";
 import ToggleCategory from "../js/modules/ToggleCategory.js";
 import ToggleEl from "../js/modules/ToggleEl.js";
 import ToggleLang from "../js/modules/ToggleLang.js";
+import CheckboxModule from "../js/modules/CheckboxModule.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   backToTop();
@@ -20,4 +21,5 @@ window.addEventListener("DOMContentLoaded", () => {
   AnimateModule();
   AosModule();
   ParallaxModule();
+  CheckboxModule();
 });

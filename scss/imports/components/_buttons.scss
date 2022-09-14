@@ -4,12 +4,15 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
   &-main {
     @extend .btn;
     --clr: #444;
     --bg: #fff;
     --px: 3.2rem;
     --fs: 1.6rem;
+    --border: #c93d37;
+    --bg-after: #c93d37;
     height: var(--height-button);
     background-color: var(--bg);
     column-gap: 1rem;
@@ -18,11 +21,12 @@
     font-size: var(--fs);
     line-height: 1;
     padding: 0 var(--px);
-    @include border($secondary);
+    @include border(var(--border));
     @include transition(all $t);
     border-radius: $base-radius;
     position: relative;
     overflow: hidden;
+
     &::after {
       --rotate: 45deg;
       content: "";
@@ -35,24 +39,54 @@
       @include transform(translate(-50%, -50%) rotate(var(--rotate)));
       @include transition(height $t $cubic);
     }
+
     .text,
     i {
       z-index: 10;
       position: relative;
     }
+
     i {
       @include transition(transform $t $cubic);
     }
+
     &:hover {
       @include transition(all $t);
       --clr: #fff;
+
       i {
         @include transform(translateX(5px));
         @include transition(transform $t $cubic);
       }
+
       &::after {
         @include transition(transform 0.6s $cubic, height 0.6s $cubic);
         height: 400%;
+      }
+    }
+
+    &-green {
+      --border: #526b3e;
+      --bg-after: #526b3e;
+      --px: 2.4rem;
+      --height-button: 5.2rem;
+      @extend .btn-main;
+      border-width: 2px;
+      border-radius: $base-radius-md;
+
+      &.rounded-sm {
+        border-radius: $base-radius;
+      }
+
+      @include md {
+        --height-button: 4.4rem;
+        --px: 1.6rem;
+        --fs: 1.3rem;
+      }
+
+      @include sm {
+        --height-button: 4rem;
+        --px: 1.2rem;
       }
     }
 
@@ -60,6 +94,7 @@
       --px: 2.4rem;
       --fs: 1.4rem;
     }
+
     @include xxs {
       --px: 1.6rem;
       --fs: 1.3rem;
