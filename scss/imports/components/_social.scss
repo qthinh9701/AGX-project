@@ -1,0 +1,33 @@
+.social-main-box {
+  .social {
+    &-list {
+      --gap-item: 1rem;
+      --size-item: 3rem;
+      display: flex;
+      li {
+        a {
+          @include circle(var(--size-item));
+          @include center(flex);
+          color: $white-cl;
+          background: #3e3e3e;
+          @include transition(all $t);
+        }
+        + li {
+          margin-left: var(--gap-item);
+        }
+        &:hover {
+          a {
+            color: $primary;
+            background: $white-cl;
+            @include transition(all $t);
+            opacity: 1;
+            i {
+              filter: brightness(0) saturate(100%) invert(36%) sepia(15%)
+                saturate(1087%) hue-rotate(50deg) brightness(98%) contrast(86%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+/* CORE - MIXINS*/
+@import "imports/core/reset";
+@import "imports/core/variables";
+@import "imports/mixins/global";
+@import "imports/mixins/container";
+@import "imports/mixins/grid";
+@import "imports/core/colors";
+@import "imports/core/layouts";
+@import "imports/core/loading";
+@import "imports/core/animations";
+
+// VENDORS
+@import "../libs/fontawesome/css/all.min.css";
+@import "imports/vendors/libs";
+@import "imports/vendors/swiper";
+@import "imports/vendors/aos";
+
+// UTILITIES
+@import "imports/utilities/grid";
+@import "imports/utilities/spacing";
+@import "imports/utilities/utilities";
+
+// components
+@import "imports/components/global_class";
+@import "imports/components/components";
+@import "imports/components/buttons";
+@import "imports/components/typography";
+@import "imports/components/pagination";
+@import "imports/components/custom-swiper";
+@import "imports/components/breadcrumb";
+@import "imports/components/aside";
+@import "imports/components/form";
+@import "imports/components/product-thumb";
+@import "imports/components/social";
+@import "imports/components/thumb-box";
+@import "imports/components/list-meta";
+
+// LAYOUT
+@import "imports/layout/header";
+@import "imports/layout/nav";
+@import "imports/layout/footer";
+@import "imports/layout/article";
+@import "imports/layout/banner";
+@import "imports/layout/category-container";
+@import "imports/layout/register";
+@import "imports/layout/related";
+
+//  Pages
+@import "imports/pages/home";
+@import "imports/pages/product-detail";

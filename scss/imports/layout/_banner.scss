@@ -1,0 +1,150 @@
+.banner {
+  &.--hero {
+    --h: 46.3vw;
+    --mheight: 500px;
+    height: var(--h);
+    max-height: 800px;
+    min-height: var(--mheight);
+    @include md {
+      --h: 100vw;
+    }
+    @include xs {
+      --mheight: 400px;
+    }
+    @include smX {
+      --h: 65vw;
+      --mheight: 400px;
+    }
+  }
+  &__single {
+    position: relative;
+    @include size(100%);
+  }
+  &__bg {
+    --pos: bottom;
+    @include abs-top-left;
+    @include size(100%);
+    @include mask-image(url(../img/torn-bg-2.png));
+    @include mask-position(var(--pos));
+    &::after {
+      content: "";
+      @include abs-top-left;
+      @include size(100%);
+      background: $gradient-header;
+    }
+    .video {
+      @include size(100%);
+      video {
+        @include img-cover;
+        display: block;
+      }
+    }
+  }
+  &__content {
+    @include size(100%);
+    @include center(flex);
+    position: relative;
+    .title-box {
+      --clr-title: #fff;
+      --alpha-title-under: 0.3;
+      --fs-title-under: 3.42em;
+      font-size: var(--h1-fs);
+      line-height: var(--h1-lh);
+
+      .title-under {
+        left: -30%;
+        top: -15px;
+      }
+      .title-main {
+        text-align: center;
+      }
+
+      @include xs {
+        .title-under {
+          left: -10%;
+        }
+      }
+      @include xxs {
+        --fs-title-under: 2.5em;
+        .title-under {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  &__slider {
+    --right-pagination: 77px;
+    @include size(100%);
+    .swiper {
+      @include size(100%);
+      &-slide {
+        .banner__content {
+          @include transform(translateY(10%));
+          @include visible(0);
+          @include transition(all $t2 $cubic);
+        }
+        &-active {
+          .banner__content {
+            @include visible(1);
+            @include transform(translateY(0));
+            @include transition(all $t2 $cubic);
+          }
+        }
+      }
+      &-pagination {
+        --my: 0;
+        top: 0;
+        left: unset;
+        right: var(--right-pagination);
+        bottom: unset;
+        width: 22px;
+        flex-direction: column;
+        @include center(y);
+        &-bullet {
+          margin: var(--swiper-pagination-bullet-horizontal-gap) var(--my) !important;
+        }
+
+        @include xxs {
+          --my: var(--swiper-pagination-bullet-horizontal-gap);
+          bottom: 30px;
+          top: unset;
+          right: unset;
+          left: 0;
+          flex-direction: row;
+          width: 100%;
+          height: 22px;
+        }
+      }
+    }
+  }
+
+  @include md {
+    &__bg {
+      --pos: center;
+      @include mask-size(cover);
+    }
+    &__slider {
+      --right-pagination: 30px;
+    }
+  }
+  @include sm {
+    &__slider {
+      --right-pagination: 10px;
+      .swiper {
+        &-pagination {
+          --swiper-pagination-bullet-horizontal-gap: 10px;
+        }
+      }
+    }
+  }
+  @include xs {
+    &__slider {
+      .swiper {
+        &-pagination {
+          --swiper-pagination-bullet-horizontal-gap: 8px;
+        }
+      }
+    }
+  }
+}

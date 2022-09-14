@@ -1,0 +1,236 @@
+// css navigator (Menu)
+.mobile-nav {
+  --spacing: 30px;
+  --padding: 30px;
+  --w-logo: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include size(100%);
+  z-index: 500;
+  pointer-events: none;
+  &.show {
+    pointer-events: visible;
+
+    .mobile-nav-main,
+    .mobile-nav-overlay {
+      @include transform(translateX(0));
+      @include transition(all $t2 $cubic);
+    }
+    .mobile-nav-main {
+      @include transition-delay(0.2s);
+    }
+  }
+  &-main,
+  &-overlay {
+    @include transform(translateX(-100%));
+    @include transition(all $t2 $cubic);
+  }
+  &-main,
+  &-wrap {
+    @include size(100%);
+  }
+  &-overlay {
+    @include fullscreen;
+    background-color: $black-cl;
+    opacity: 0.5;
+    cursor: pointer;
+    @include transition-delay(0.2s);
+  }
+  &-header {
+    padding: var(--padding);
+    margin-bottom: var(--spacing);
+    display: flex;
+    justify-content: space-between;
+    .logo-box {
+      img {
+        width: var(--w-logo);
+        display: block;
+      }
+    }
+  }
+  &-close {
+    color: $white-cl;
+    cursor: pointer;
+  }
+  &-main {
+    --fs-item: 1.5rem;
+    --fs-sub-item: 1.3rem;
+    max-width: 375px;
+    width: 100%;
+    background-color: $primary;
+    position: relative;
+    z-index: 10;
+    overflow-y: auto;
+  }
+  &-content,
+  &-footer {
+    padding: 0 var(--padding);
+  }
+  &-content {
+    margin-bottom: var(--spacing);
+
+    .menu {
+      --pd-item: 1.5rem;
+      max-height: 330px;
+      overflow-y: auto;
+      &::-webkit-scrollbar-thumb {
+        background: $primary-sub;
+      }
+      &::-webkit-scrollbar-track {
+        background: $primary-light;
+      }
+      &-list {
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+
+        > .menu-item {
+          font-size: var(--fs-item);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+      }
+      &-item {
+        --w-expand: 30px;
+        > a {
+          padding: var(--pd-item) 0;
+          display: block;
+        }
+        &.parent {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          &.active {
+            > .dropdown-icon {
+              i {
+                @include transform(rotate(180deg));
+                @include transition(all $t);
+              }
+            }
+          }
+          > a {
+            width: calc(100% - var(--w-expand));
+          }
+          > .dropdown-icon {
+            @include size(var(--w-expand));
+          }
+          .submenu {
+            width: 100%;
+            padding: 0 1rem;
+            display: none;
+            &-item {
+              font-size: var(--fs-sub-item);
+              > a {
+                padding: 1rem 0;
+              }
+            }
+
+            &-link {
+              color: $white-cl;
+            }
+          }
+        }
+      }
+      .dropdown-icon {
+        @include center(flex);
+        i {
+          @include transition(all $t);
+        }
+      }
+      .dropdown-icon,
+      &-link {
+        color: $white-cl;
+      }
+    }
+  }
+  &-contact {
+    --size-icon: 30px;
+    margin: 2rem 0;
+    ul li {
+      @include transition(all $t);
+      &:hover {
+        opacity: 0.5;
+        @include transition(all $t);
+      }
+      + li {
+        margin-top: 1rem;
+      }
+      a {
+        display: flex;
+        align-items: flex-start;
+        color: $white-cl;
+        i {
+          margin-right: 0.8rem;
+          flex-shrink: 0;
+          @include circle(var(--size-icon));
+          @include center(flex);
+          background-color: $primary-sub;
+          font-size: 1.2rem;
+        }
+        span {
+          @include transform(translateY(5px));
+          font-size: var(--fs-sub-item);
+        }
+      }
+    }
+  }
+  &-social {
+    margin-bottom: 2rem;
+    a {
+      color: $white-cl;
+      margin-right: 2rem;
+      &:hover {
+        color: $primary-sub;
+        i {
+          filter: brightness(0) saturate(100%) invert(59%) sepia(58%)
+            saturate(380%) hue-rotate(47deg) brightness(94%) contrast(83%);
+        }
+      }
+    }
+  }
+  &-copyright {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: var(--spacing);
+    color: $white-cl;
+  }
+
+  @include xxs {
+    --padding: 20px;
+    --spacing: 20px;
+    --w-logo: 60px;
+  }
+
+  @include maxW(320px) {
+    --padding: 10px;
+    --spacing: 10px;
+    &-main {
+      --fs-item: 1.4rem;
+      --fs-sub-item: 1.2rem;
+    }
+    &-content {
+      .menu {
+        --pd-item: 1.2rem;
+      }
+    }
+  }
+
+  @include maxW(280px) {
+    --padding: 8px;
+    --spacing: 8px;
+    &-contact {
+      ul li {
+        a {
+          display: block;
+          i {
+            margin-right: 0;
+            margin-bottom: 0.8rem;
+          }
+        }
+      }
+    }
+    &-content {
+      .menu {
+        --pd-item: 1rem;
+      }
+    }
+  }
+}

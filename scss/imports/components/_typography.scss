@@ -1,0 +1,54 @@
+// utilities class
+$line-height: (
+  "17": 1.7rem,
+);
+@each $key, $value in $line-height {
+  .lh-#{$key} {
+    line-height: $value;
+  }
+}
+
+$heading: (h1, h2, h3, h4, h5, h6);
+@each $key in $heading {
+  .#{$key} {
+    font-size: var(--#{$key}-fs);
+    line-height: var(--#{$key}-lh);
+  }
+}
+
+// css heading
+.heading {
+  font-family: mb; //font bold
+}
+
+// css body text
+.body {
+  &-14 {
+    font-size: var(--body14-fs);
+    line-height: var(--body14-lh);
+  }
+}
+
+.title-box {
+  --clr-title: #444;
+  --fs-title-under: 5em;
+  --alpha-title-under: 0.1;
+  position: relative;
+  width: fit-content;
+  font-size: var(--h2-fs);
+  line-height: var(--h2-lh);
+  .title-under {
+    color: rgba(228, 216, 209, var(--alpha-title-under));
+    font-family: tar;
+    font-size: var(--fs-title-under);
+    line-height: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  .title-main {
+    color: var(--clr-title);
+    font-family: mb;
+  }
+}

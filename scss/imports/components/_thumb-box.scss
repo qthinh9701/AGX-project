@@ -1,0 +1,137 @@
+.thumb-box {
+  .thumb {
+    &-image {
+      position: relative;
+      border-radius: $base-radius-md;
+      overflow: hidden;
+      &::after {
+        content: "";
+        @include abs-top-left;
+        @include size(100%);
+        background-color: rgba($primary, $alpha: 0.3);
+        @include transform(translateY(-70%));
+        @include visible(0);
+        @include transition(all $t2 $cubic);
+        z-index: 1;
+      }
+      .img {
+        @include image-responsive(384, 317);
+        img {
+          @include transition(all $t2 $cubic);
+        }
+      }
+      .time {
+        position: absolute;
+        bottom: 5rem;
+        left: 4rem;
+        z-index: 2;
+        a {
+          padding: 2.2rem 3.2rem;
+          border-radius: $base-radius-md;
+          background-color: $primary;
+          color: $white-cl;
+          font-size: var(--h6-fs);
+          line-height: var(--h6-lh);
+          letter-spacing: -0.02em;
+          font-family: wsb;
+          display: block;
+        }
+      }
+    }
+
+    &-title {
+      --over-title: 1;
+      --mt: 2.5rem;
+      margin-top: var(--mt);
+      @include overtext(var(--over-title));
+      a {
+        color: $text-clr;
+        @include transition(all $t);
+      }
+    }
+    &-desc {
+      --over-desc: 5;
+      margin-top: 1.2rem;
+      @include overtext(var(--over-desc));
+    }
+
+    @include lg {
+      &-meta {
+        .meta-item {
+          .text {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+    @include sm {
+      &-content {
+        --mt: 20px;
+        .button-place {
+          margin-top: var(--mt);
+        }
+      }
+      &-image {
+        .time {
+          bottom: 2rem;
+          left: 2rem;
+          a {
+            padding: 1.5rem 2.5rem;
+          }
+        }
+      }
+    }
+    @include xs {
+      &-title {
+        --mt: 1.5rem;
+        --over-title: initial;
+      }
+      &-content {
+        --mt: 10px;
+      }
+      &-desc {
+        --over-desc: initial;
+      }
+      &-image {
+        .time {
+          a {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+    @include xxs {
+      &-image {
+        .time {
+          bottom: 1rem;
+          left: 1rem;
+          a {
+            padding: 1rem 2rem;
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+  &:hover {
+    .thumb {
+      &-image {
+        &::after {
+          @include transform(translateY(0));
+          opacity: 1;
+          @include transition(all $t2 $cubic);
+        }
+        .img img {
+          @include transform(scale(1.1));
+          @include transition(all $t2 $cubic);
+        }
+      }
+      &-title {
+        a {
+          @include transition(all $t);
+          color: $primary;
+        }
+      }
+    }
+  }
+}

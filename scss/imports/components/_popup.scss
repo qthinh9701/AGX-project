@@ -1,0 +1,40 @@
+.popup {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 450;
+  @include center(flex);
+  @include transform(translateY(-10px));
+  @include visible(0);
+  @include transition(all $t);
+
+  &.is-show {
+    @include visible(1);
+    @include transform(translateY(0));
+    @include transition(all $t);
+  }
+
+  &-content {
+    background-color: $white-cl;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  &-close {
+    --size: 30px;
+    position: absolute;
+    top: calc(-1 / 2 * var(--size));
+    right: calc(-1 / 2 * var(--size));
+    @include circle(var(--size));
+    color: $white-cl;
+    background-color: #f44336;
+    @include center(flex);
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &-main {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}

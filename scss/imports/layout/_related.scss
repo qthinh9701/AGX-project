@@ -1,0 +1,88 @@
+.related {
+  --pt: 7.4rem;
+  --pb: 4.3rem;
+  padding-top: var(--pt);
+  padding-bottom: var(--pb);
+  &__slider {
+    .swiper {
+      --gap: 2.4rem;
+      --item: 4;
+      &-wrapper {
+        padding: 2rem 0;
+      }
+      &-slide {
+        width: calc(100% / var(--item) - var(--gap));
+        margin-right: var(--gap);
+      }
+
+      @include lg {
+        --gap: 1.6rem;
+        --item: 3;
+      }
+      @include md {
+        --gap: 1.2rem;
+        --item: 2;
+      }
+      @include maxW(320px) {
+        --gap: 1rem;
+        --item: 1;
+      }
+    }
+    .swiper-pagination {
+      --swiper-pagination-bullet-inactive-color: #444;
+      --swiper-theme-color: #444;
+      --swiper-pagination-bullet-horizontal-gap: 5px;
+      position: static;
+      height: 22px;
+      &-bullet-active {
+        --swiper-pagination-bullet-size: 14px;
+      }
+      @include sm-min {
+        display: none;
+      }
+    }
+    .slider-ctr {
+      --pos: -30px;
+      @include circle(24px);
+      @include border($text-clr, 1.5px);
+      @include center(flex);
+      color: $text-clr;
+      i {
+        display: block;
+      }
+      &.--prev {
+        left: var(--pos);
+      }
+      &.--next {
+        right: var(--pos);
+      }
+
+      @media (max-width: 1300px) and (min-width: 1200px) {
+        --pos: 0px;
+      }
+      @media (max-width: 1026px) and (min-width: 992px) {
+        --pos: 0px;
+      }
+      @include sm {
+        display: none;
+      }
+    }
+  }
+
+  @include md {
+    --pt: 5rem;
+    --pb: 3.5rem;
+  }
+  @include sm {
+    --pt: 4rem;
+    --pb: 3rem;
+    &__slider {
+      margin-top: 30px;
+    }
+  }
+  @include xs {
+    &__slider {
+      margin-top: 20px;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+// css footer
+.footer {
+  --py: 23rem;
+  padding: var(--py) 0;
+  position: relative;
+  &::after {
+    content: "";
+    @include abs-top-left;
+    background: $gradient-footer;
+    @include size(100%);
+    z-index: 0;
+    @include transform(rotate(180deg));
+  }
+  &-row-wrap {
+    position: relative;
+    z-index: 10;
+  }
+  &__logo {
+    img {
+      display: block;
+    }
+  }
+  &__social {
+    margin-bottom: 0.6rem;
+  }
+  &__copyright {
+    font-family: nm;
+  }
+  &__title {
+    margin-bottom: 1.2rem;
+    font-family: mb;
+  }
+  &-col {
+    ul li {
+      color: $white-cl;
+
+      + li {
+        margin-top: 0.4rem;
+      }
+      a {
+        color: $white-cl;
+        display: block;
+        @include transition(all $t);
+      }
+      &:hover {
+        a {
+          opacity: 0.5;
+          @include transition(all $t);
+        }
+      }
+    }
+  }
+  &__info {
+    .address-list {
+      &-item {
+        .label {
+          font-family: mb;
+        }
+      }
+    }
+  }
+
+  @include md {
+    --py: 15rem;
+  }
+  @include sm {
+    --py: 8rem;
+    &__title {
+      margin-bottom: 0.8rem;
+    }
+  }
+  @include xs {
+    --py: 6rem;
+  }
+}

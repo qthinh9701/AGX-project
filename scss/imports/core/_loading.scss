@@ -1,0 +1,21 @@
+// css loading
+.banner {
+  @include transform(scale(2));
+  opacity: 0;
+  &__content {
+    .title-main,
+    .title-under {
+      opacity: 0;
+    }
+    .title-under {
+      @include transform(scale(2));
+    }
+    .title-main {
+      @include transform(translate(0, -50%));
+    }
+  }
+}
+.header {
+  opacity: 0;
+  @include transform(translateY(-100%));
+}

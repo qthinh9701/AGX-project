@@ -1,0 +1,29 @@
+.form-wrapper {
+  .form-field {
+    position: relative;
+  }
+  .form-ctr {
+    height: var(--h-ctr);
+    width: 100%;
+    background-color: var(--bg-ctr);
+    outline: none;
+    font-size: var(--h6-fs);
+    line-height: var(--h6-lh);
+    @include input-placeholder {
+      color: $text-clr;
+      opacity: 0.5;
+    }
+  }
+  .form-submit {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--clr-submit);
+
+    &.submit-circle {
+      @include circle(var(--size-submit));
+      @include center(flex);
+    }
+  }
+}

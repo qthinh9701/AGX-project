@@ -1,0 +1,33 @@
+.pagination {
+  --size: 50px;
+  --gap: 1.6rem;
+  ul.page-numbers {
+    @include center(flex);
+    flex-wrap: wrap;
+    gap: var(--gap);
+    li > * {
+      background-color: #fff;
+      @include transition(all $t);
+      @include size(var(--size));
+      font-size: var(--h5-fs);
+      line-height: var(--h5-lh);
+      @include center(flex);
+      border-radius: $base-radius;
+      color: $text-clr;
+      @include border($primary);
+    }
+    li > span {
+      font-family: mb;
+    }
+    li > span,
+    li > *:hover {
+      background-color: $primary;
+      @include transition(all $t);
+      color: $white-cl;
+    }
+  }
+  @include sm {
+    --size: 40px;
+    --gap: 0.8rem;
+  }
+}

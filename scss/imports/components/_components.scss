@@ -1,0 +1,210 @@
+// css img, button, heading, title, input, elements, components...
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+a {
+  text-decoration: none;
+}
+
+// back to top
+.move-to-top {
+  @include size(40px);
+  border-radius: 6px;
+  background-color: $primary;
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2.4rem;
+  z-index: 992;
+  transform: translateX(2rem);
+  opacity: 0;
+  @include transition(all $t);
+  cursor: pointer;
+  visibility: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  justify-content: space-evenly;
+  -webkit-justify-content: space-evenly;
+  align-items: center;
+  -webkit-align-items: center;
+  &.active {
+    @include visible(1);
+    @include transform(translateX(0));
+  }
+  @include lg {
+    bottom: 6.5rem;
+    right: 1.5rem;
+  }
+  @include xs {
+    bottom: 1.5rem;
+  }
+
+  .pyramid {
+    display: block;
+    width: 0;
+    height: 0;
+    z-index: 2;
+    border: 6px solid transparent;
+    border-bottom: 6px solid #fff;
+    margin-top: -6px;
+    &:nth-child(1) {
+      @include animation(moveTop 1s linear 0.4s infinite);
+    }
+    &:nth-child(2) {
+      @include animation(moveTop 1s linear 0.2s infinite);
+    }
+    &:nth-child(3) {
+      @include animation(moveTop 1s linear 0s infinite);
+    }
+  }
+
+  @include hover {
+    @media (min-width: 1025px) {
+      box-shadow: 0 0 10px #fff;
+    }
+  }
+}
+
+// back ground
+.bg-img-center {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &-fixed {
+    @extend .bg-img-center;
+    background-attachment: fixed;
+  }
+}
+
+.progress-wrap {
+  --size: 46px;
+  --pos: 50px;
+  position: fixed;
+  right: var(--pos);
+  bottom: var(--pos);
+  @include size(var(--size));
+  cursor: pointer;
+  display: block;
+  border-radius: 50px;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  z-index: 999;
+  @include visible(0);
+  @include transition(opacity $t linear, transform 1s $cubic);
+  @include transform(translateY(10px));
+
+  &.active-progress {
+    @include visible(1);
+    @include transform(translateY(0));
+    @include transition(opacity $t linear, transform 1s $cubic);
+  }
+  svg {
+    &.progress-circle path {
+      stroke: $primary;
+      stroke-width: 4;
+      @include transition(all $t linear);
+    }
+    path {
+      fill: none;
+    }
+  }
+  i {
+    @include center(xy);
+    color: $primary;
+  }
+  @media (min-width: 1025px) {
+    box-shadow: 0 0 10px #fff;
+  }
+  @include lg {
+    --pos: 30px;
+    --size: 40px;
+  }
+  @include xs {
+    --pos: 15px;
+    --size: 30px;
+  }
+}
+
+.torn-layer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  &.--bot {
+    bottom: 0;
+  }
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+// mask image
+.mask-image {
+  @include mask-size(100%);
+  @include mask-repeat(no-repeat);
+}
+// hide
+.hide-on-tablet {
+  @include md-min {
+    display: none;
+  }
+}
+// decor
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  pointer-events: none;
+  img {
+    width: 100%;
+    @include transition(transform 1s);
+  }
+}
+.decor-image {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  img {
+    display: block;
+    @include transition(transform 1s);
+  }
+
+  &.top-left {
+    top: -10%;
+    left: -15%;
+  }
+  &.top-right {
+    right: -11%;
+    top: -5%;
+  }
+  &.bot-right {
+    bottom: 0;
+    right: 10%;
+  }
+  @include sm {
+    opacity: 0.7;
+    &.top-left {
+      top: -3%;
+    }
+    &.top-right {
+      top: 0;
+    }
+  }
+}
+
+[data-aos][data-aos][data-aos-easing="ease"],
+body[data-aos-easing="ease"] [data-aos] {
+  transition-timing-function: $cubic;
+}

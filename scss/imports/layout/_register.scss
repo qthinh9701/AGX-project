@@ -1,0 +1,61 @@
+.register {
+  &__form {
+    --pleft: 6.7rem;
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: "";
+      @include abs-top-left;
+      @include size(100%);
+      background-color: rgba($black-cl, $alpha: 0.4);
+      z-index: 0;
+    }
+    .content-box {
+      padding-left: var(--pleft);
+      padding-right: var(--pright);
+      position: relative;
+      z-index: 10;
+    }
+    .form-wrapper {
+      --bg-ctr: #fff;
+      --h-ctr: 55px;
+      --size-submit: 39px;
+      --clr-submit: #fff;
+      max-width: 444px;
+      .form-ctr {
+        border-radius: $base-radius-xl;
+        padding-left: 2.4rem;
+        padding-right: calc(var(--size-submit) + 8px);
+      }
+      .form-submit {
+        background-color: $secondary;
+        @include center(y);
+        right: 8px;
+        @include border($secondary);
+        @include transition(all $t);
+        i {
+          @include size(48.71%);
+          display: block;
+          svg {
+            @include size(100%);
+          }
+        }
+        &:hover {
+          background-color: $white-cl;
+          --clr-submit: #c93d37;
+          @include transition(all $t);
+        }
+      }
+    }
+    @include md {
+      --pleft: 2rem;
+      --pright: var(--pleft);
+    }
+    @include sm {
+      --pleft: 1.5rem;
+    }
+    @include xxs {
+      --pleft: 0.8rem;
+    }
+  }
+}

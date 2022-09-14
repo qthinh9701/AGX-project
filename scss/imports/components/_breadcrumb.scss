@@ -1,0 +1,48 @@
+.breadcrumb {
+  --gap: 5px;
+  margin-top: 3.2rem;
+  position: relative;
+  z-index: 1;
+  &-list {
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+    clip-path: polygon(0 1%, 0 0, 0 100%, 0% 100%);
+    @include transition(all 2s $cubic);
+    &.is-inview {
+      clip-path: polygon(0 1%, 100% 0, 100% 100%, 0 100%);
+    }
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+  }
+  &-item {
+    color: $text-clr;
+    font-size: var(--h5-fs);
+    flex-shrink: 0;
+
+    &:hover {
+      color: $secondary;
+      a {
+        @include transition(all $t);
+      }
+    }
+    a {
+      color: currentColor;
+      @include transition(all $t);
+    }
+    + .breadcrumb-item {
+      margin-left: var(--gap);
+
+      &::before {
+        content: "/";
+        margin-right: var(--gap);
+        color: currentColor;
+      }
+      &.current-page {
+        pointer-events: none;
+        font-family: mb;
+      }
+    }
+  }
+}

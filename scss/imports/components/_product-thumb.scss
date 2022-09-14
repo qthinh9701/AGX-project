@@ -1,0 +1,81 @@
+.product-thumb {
+  position: relative;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: $base-radius-md;
+  background-color: $white-cl;
+  overflow: hidden;
+  height: 100%;
+  .product-image {
+    height: 225px;
+    @include image-responsive(282, 225);
+  }
+  .product-cap {
+    text-align: center;
+    padding: 2.9rem 1rem;
+  }
+  .product-name {
+    a {
+      color: $primary;
+    }
+  }
+  .product-popup {
+    @include abs-top-left;
+    @include size(100%);
+    @include center(flex);
+    @include visible(0);
+
+    .overlay {
+      @include abs-top-left;
+      @include size(100%);
+      background-color: rgba(0, 0, 0, 0.7);
+      @include transform(translateY(-70%));
+      @include transition(all 0.6s $cubic);
+      opacity: 0;
+    }
+    .btn {
+      z-index: 1;
+      @include transform(scale(0));
+      @include transition(all 0.6s $cubic);
+    }
+    @include sm {
+      position: static;
+      @include visible(1);
+      height: initial;
+      padding: 1rem;
+      * {
+        @include visible(1);
+      }
+      .btn {
+        @include transform(scale(1));
+      }
+      .overlay {
+        display: none;
+      }
+    }
+    @include xxs {
+      padding: 0.5rem;
+    }
+  }
+  &:hover {
+    .product-popup {
+      @include visible(1);
+      .overlay {
+        @include transform(translateY(0));
+        @include transition(all 0.6s $cubic);
+        opacity: 1;
+      }
+      .btn {
+        @include transform(scale(1));
+        @include transition(all 0.6s $cubic 0.1s);
+      }
+    }
+  }
+
+  @include xs {
+    display: flex;
+    flex-direction: column;
+    .product-popup {
+      margin-top: auto;
+    }
+  }
+}

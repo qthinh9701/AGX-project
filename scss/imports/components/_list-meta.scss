@@ -1,0 +1,25 @@
+.list-meta {
+  --gap-item: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+  .meta-item {
+    .link-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-item);
+    }
+    .icon {
+      color: $primary;
+    }
+    .text {
+      color: $text-clr;
+      font-family: mb;
+      text-align: center;
+    }
+  }
+  @include lg {
+    --gap-item: 0.8rem;
+    grid-area: 1.2rem;
+  }
+}

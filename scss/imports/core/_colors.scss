@@ -1,0 +1,25 @@
+@each $cl-name, $cl-vl in $theme-colors {
+  .c-current {
+    color: currentColor;
+  }
+  .c-#{$cl-name} {
+    color: $cl-vl;
+  }
+  .bg-#{$cl-name} {
+    background-color: $cl-vl;
+  }
+}
+
+// hover color
+$hoverColor: (
+  "white": $white-cl,
+  "black": $black-cl,
+);
+@each $cl-name, $cl-vl in $hoverColor {
+  .c-hover-#{$cl-name}:hover {
+    color: $cl-vl;
+  }
+  .bg-hover-#{$cl-name}:hover {
+    background-color: $cl-vl;
+  }
+}

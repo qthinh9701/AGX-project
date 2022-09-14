@@ -1,0 +1,33 @@
+.slider-pagination {
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-inactive-color: transparent;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-theme-color: transparent;
+  --swiper-pagination-bullet-horizontal-gap: 15px;
+  @include center(flex);
+  .swiper-pagination-bullet {
+    @include border($white-cl);
+    position: relative;
+    @include transition(all $t $cubic);
+    &::after {
+      content: "";
+      @include center(xy);
+      @include size(10px);
+      background-color: transparent;
+      border-radius: 100rem;
+      @include transition(all $t $cubic);
+    }
+    &-active {
+      --swiper-pagination-bullet-size: 22px;
+      &::after {
+        background-color: $white-cl;
+      }
+    }
+  }
+}
+
+.slider-ctr {
+  &::after {
+    display: none;
+  }
+}
