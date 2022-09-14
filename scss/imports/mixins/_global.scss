@@ -405,7 +405,7 @@
 }
 // ratio
 @mixin ratio($x, $y, $pseudo: false) {
-  $padding: unquote(($y / $x) * 100 + "%");
+  $padding: calc(($y / $x) * 100%);
   @if $pseudo {
     &:before {
       @include pseudo($pos: relative);

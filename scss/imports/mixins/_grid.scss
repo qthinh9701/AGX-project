@@ -10,7 +10,7 @@
 @mixin make-col($size: false, $columns: $grid-columns) {
   @if $size {
     flex: 0 0 auto;
-    width: ($size * 100%) / $columns;
+    width: calc(calc($size * 100%) / $columns);
   } @else {
     flex: 1 1 0;
     max-width: 100%;
