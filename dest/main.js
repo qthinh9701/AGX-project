@@ -9,6 +9,7 @@ import ToggleCategory from "../js/modules/ToggleCategory.js";
 import ToggleEl from "../js/modules/ToggleEl.js";
 import ToggleLang from "../js/modules/ToggleLang.js";
 import CheckboxModule from "../js/modules/CheckboxModule.js";
+import PopupModule from "../js/modules/PopupModule.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   backToTop();
@@ -22,4 +23,5 @@ window.addEventListener("DOMContentLoaded", () => {
   AosModule();
   ParallaxModule();
   CheckboxModule();
+  PopupModule();
 });
